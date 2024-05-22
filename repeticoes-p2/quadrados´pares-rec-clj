@@ -1,0 +1,15 @@
+(ns resp04
+  (:gen-class)
+  (:require [resp02 :refer [quadrados-rec]]))
+
+(defn quadrados-pares-rec [lista]
+  (loop [acc '() lst lista]
+    (if (empty? lst)
+      acc
+      (recur (if (even? (first lst))
+               (cons (* (first lst) (first lst)) acc)
+               acc)
+             (rest lst)))))
+
+(def numeros [1 2 3 4 5])
+(println (quadrados-pares-rec numeros)) ; Saída: (4 16)
